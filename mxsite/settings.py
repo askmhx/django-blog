@@ -7,27 +7,16 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-from bae.core import const
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'EZCrbFWAExhMsesUMomg',
-        'USER': const.MYSQL_USER,
-        'PASSWORD': const.MYSQL_PASS,
-        'HOST': const.MYSQL_HOST,
-        'PORT': const.MYSQL_PORT,
+        'NAME': 'rBcccWonJFYwDiFYWvlJ',
+        'USER': 'EScaDGFFmMBaEicRacLFBA90',
+        'PASSWORD': 'UlWUCIoINM35T40q0Ug2lwQKXV7rkXno',
+        'HOST': 'sqld.duapp.com',
+        'PORT': '4050',
     }
 }
-
-CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
-        'LOCATION': const.CACHE_ADDR,
-        'TIMEOUT':  60,
-    }
-}
-
-#SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
 
 ALLOWED_HOSTS = []
 
