@@ -50,7 +50,11 @@ STATIC_ROOT = ''
 STATIC_URL = '/static/'
 
 import os
-STATICFILES_DIRS = (os.path.join(os.path.dirname(__file__), '..', 'static').replace('\\', '/'),)
+import sys
+from django.contrib import admin
+
+STATICFILES_DIRS = (os.path.join(os.path.dirname(__file__), '..', 'static').replace('\\', '/'),
+                    os.path.join(sys.modules[admin.__class__.__module__].__file__, 'static'))
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
@@ -77,8 +81,7 @@ ROOT_URLCONF = 'mxsite.urls'
 
 WSGI_APPLICATION = 'mxsite.wsgi.application'
 
-
-TEMPLATE_DIRS = (os.path.join(os.path.dirname(__file__), '..', 'templates').replace('\\','/'),)
+TEMPLATE_DIRS = (os.path.join(os.path.dirname(__file__), '..', 'templates').replace('\\', '/'),)
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     "django.contrib.auth.context_processors.auth",
