@@ -1,1 +1,2 @@
 django==1.6.1
+django-ckeditor=4.0.2
