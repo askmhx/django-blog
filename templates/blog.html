@@ -1,0 +1,26 @@
+{% extends 'frame/layout.html' %}
+{% block title %} MengHX Blog {{ blog.title }} {% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <h1>{{ blog.title }}</h1>
+            <hr/>
+        </div>
+        <div class="row">
+            {{ blog.content|safe }}
+        </div>
+        <div class="row">
+            <br/>
+            <button type="button" class="btn btn-default btn-sm">
+                <span class="glyphicon glyphicon-thumbs-up"></span> {{ blog.support }}
+            </button>
+            <button type="button" class="btn btn-default btn-sm">
+                <span class="glyphicon glyphicon-thumbs-down"></span> {{ blog.oppose }}
+            </button>
+            <span class="pull-right">
+                        <span>{{ blog.author }}</span>
+                        <span>{{ blog.create_time }}</span>
+            </span>
+        </div>
+    </div>
+{% endblock %}

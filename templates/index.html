@@ -1,0 +1,43 @@
+{% extends 'frame/layout.html' %}
+{% block title %} MengHX Blog Home {% endblock %}
+{% block content %}
+    <div class="container">
+        {% for cblog in bloglist %}
+            {% if forloop.counter == 1 or forloop.counter == 4 %}
+                <div class="row">
+            {% endif %}
+        <article class="col-md-4 well-lg">
+            <header>
+                <h3 style="height: 28px;overflow: hidden;"><a href='{% url blog cblog.id %}'>{{ cblog.title|truncatechars:30 }}</a></h3>
+                 <div class="text-muted">
+                        <span>{{ cblog.tags }}</span>
+                        <span class="pull-right">{{ cblog.author }}&nbsp;发表于{{ cblog.create_time }}</span>
+                 </div>
+                <hr/>
+            </header>
+            <div style="height: 205px;overflow: hidden;-o-text-overflow: ellipsis;-ms-text-overflow: ellipsis;text-overflow: ellipsis;">
+                {{ cblog.content|truncatewords_html:80|safe }}
+            </div>
+            <footer>
+                <hr>
+                <button type="button" class="btn btn-default btn-sm">
+                    <span class="glyphicon glyphicon-thumbs-up"></span> {{ cblog.support }}
+                </button>
+                <button type="button" class="btn btn-default btn-sm">
+                    <span class="glyphicon glyphicon-thumbs-down"></span> {{ cblog.oppose }}
+                </button>
+                <span class="pull-right text-primary">
+                   <a class="h4" href='{% url blog cblog.id %}'> more...</a>
+                </span>
+            </footer>
+        </article>
+        {% if forloop.counter == 3 or forloop.counter == 6%}
+            </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+    <ul class="pager">
+        <li class="previous disabled"><a href="#">&larr; Older</a></li>
+        <li class="next"><a href="#">Newer &rarr;</a></li>
+    </ul>
+{% endblock %}

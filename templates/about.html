@@ -1,0 +1,30 @@
+{% extends 'frame/layout.html' %}
+{% load staticfiles %}
+{% block title %} MengHX Blog About Me {% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="row padding-large">
+            <div class="col-lg-4" style="margin-top: 20px;">
+                <img class="img-circle" src="{% static "img/photo.jpg" %}" width="250px" height="250px">
+            </div>
+            <div class="col-lg-offset-4">
+                <h1>JUST NOTHING</h1>
+                <hr/>
+                <p><a href="http://weibo.com/mxdiao" class="btn-link"><strong>@_Diaoer</strong></a></p>
+                <p>Programmer</p>
+
+                <p>Objective-C / <del>JAVA</del> / Python / Go / ...</p>
+
+                <p>OS X / <del>Windows</del> / Fedora / Ubuntu / <del>Gentoo</del> / Sabayon ...</p>
+
+                <p>Stay hungry，Stay foolish!</p>
+                <hr/>
+                <p>Work@Shanghai</p>
+
+                <p><a href="mailto:mhxdev@gmail.com">mhxdev@gmail.com</a></p>
+
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}
