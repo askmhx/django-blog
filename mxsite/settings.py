@@ -98,7 +98,7 @@ INSTALLED_APPS = (
 )
 
 CKEDITOR_UPLOAD_PATH = os.path.join(os.path.dirname(__file__), '..', 'static/ufiles').replace('\\', '/')
-CKEDITOR_UPLOAD_PREFIX = "http://blog.vcher.com/static/ufiles/"
+CKEDITOR_UPLOAD_PREFIX = "http://www.vcher.com/static/ufiles/"
 CKEDITOR_CONFIGS = {
     'default': {
         'toolbar': 'Full',
