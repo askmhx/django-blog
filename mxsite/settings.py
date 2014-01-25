@@ -52,8 +52,8 @@ STATIC_URL = '/static/'
 
 import os
 from django.contrib import admin
-STATICFILES_DIRS = [os.path.join(os.path.dirname(__file__), '..', 'static').replace('\\', '/'),
-                    os.path.join(os.path.dirname(admin.__file__), 'static'),]
+STATICFILES_DIRS = (os.path.join(os.path.dirname(__file__), '..', 'static').replace('\\', '/'),
+                    os.path.join(os.path.dirname(admin.__file__), 'static'),)
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
