@@ -1,4 +1,3 @@
-import sys
 import os
 
 DEBUG = True
@@ -52,7 +51,7 @@ STATIC_ROOT = ''
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = (os.path.join(os.path.dirname(__file__), '..', 'static'), os.path.join(os.path.dirname(sys.modules['django'].__file__), 'contrib/admin/static'),)
+STATICFILES_DIRS = (os.path.join(os.path.dirname(__file__), '..', 'static'),)
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',

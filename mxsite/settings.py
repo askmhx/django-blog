@@ -51,8 +51,7 @@ STATIC_ROOT = ''
 STATIC_URL = '/static/'
 
 import os
-import sys
-STATICFILES_DIRS = (os.path.join(os.path.dirname(__file__), '..', 'static'), os.path.join(os.path.dirname(sys.modules['django'].__file__), 'contrib/admin/static'),)
+STATICFILES_DIRS = (os.path.join(os.path.dirname(__file__), '..', 'static'), )
 
 
 STATICFILES_FINDERS = (
