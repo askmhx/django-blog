@@ -5,7 +5,7 @@
         {% for cblog in bloglist %}
                 <li>
                     <div class="container well-sm">
-                        <a href='{% url blog cblog.id %}' class="h5">{{ cblog.title }}</a>
+                        <a href='{% url 'blog' cblog.id %}' class="h5">{{ cblog.title }}</a>
                         <span class="pull-right">{{ cblog.create_time }}</span>
                     </div>
                 </li>
