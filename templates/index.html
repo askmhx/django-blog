@@ -36,8 +36,7 @@
         {% endif %}
         {% endfor %}
     </div>
-    <ul class="pager">
-        <li class="previous disabled"><a href="#">&larr; Older</a></li>
-        <li class="next"><a href="#">Newer &rarr;</a></li>
-    </ul>
+    {% if  bloglist.count == 6 %}
+            <a class="btn btn-default center-block" href="{% url 'archive' %}">Archives ...</a>
+    {% endif %}
 {% endblock %}
