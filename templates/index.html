@@ -20,11 +20,11 @@
             </div>
             <footer>
                 <hr>
-                <button type="button" class="btn btn-default btn-sm">
-                    <span class="glyphicon glyphicon-thumbs-up"></span> {{ cblog.support }}
+                <button type="button" class="btn btn-default btn-sm" onclick="thumbsClick(this,'{{ cblog.id }}','support')">
+                    <span class="glyphicon glyphicon-thumbs-up"></span> <span>{{ cblog.support }}</span>
                 </button>
-                <button type="button" class="btn btn-default btn-sm">
-                    <span class="glyphicon glyphicon-thumbs-down"></span> {{ cblog.oppose }}
+                <button type="button" class="btn btn-default btn-sm" onclick="thumbsClick(this,'{{ cblog.id }}','oppose')">
+                    <span class="glyphicon glyphicon-thumbs-down"></span> <span>{{ cblog.oppose }}</span>
                 </button>
                 <span class="pull-right text-primary">
                    <a class="h4" href='{% url 'blog' cblog.id %}'> more...</a>
