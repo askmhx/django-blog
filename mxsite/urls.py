@@ -17,4 +17,5 @@ urlpatterns = patterns(
     url(r'^about/', site.about, name='about'),
     url(r'^ckeditor/', include('ckeditor.urls')),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^robots\.txt$', django.contrib.staticfiles.views.serve, kwargs={'path': 'robots.txt'}),
 )
