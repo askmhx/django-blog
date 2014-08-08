@@ -1,6 +1,9 @@
 {% extends 'frame/layout.html' %}
 {% load staticfiles %}
 {% block title %} MengHX Start Page {% endblock %}
+{% block headExtra %}
+      <link rel="stylesheet" href="{% static "css/mxsite-start.css" %}"/>
+{% endblock %}
 {% block content %}
     <div id="search_content">
         <form class="search_form" id="queryForm" action="http://www.google.com/search" target="_blank">
