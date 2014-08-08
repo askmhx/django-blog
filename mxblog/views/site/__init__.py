@@ -12,5 +12,8 @@ def about(request):
     return TemplateResponse(request, 'about.html', {"navloc": "about"})
 
 
+def start(request):
+    return TemplateResponse(request, 'start.html', {"navloc": "start"})
+
 def tags(request):
     return TemplateResponse(request, 'index.html')

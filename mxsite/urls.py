@@ -14,6 +14,7 @@ urlpatterns = patterns(
     url(r'^blog/(?P<bid>\d+)/', blog.blog, name='blog'),
     url(r'^thumbs/(?P<ctype>(support)|(oppose))/(?P<bid>\d+)/', blog.thumbs),
     url(r'^archive/', blog.archive, name='archive'),
+    url(r'^start/', site.start, name='start'),
     url(r'^about/', site.about, name='about'),
     url(r'^ckeditor/', include('ckeditor.urls')),
     url(r'^admin/', include(admin.site.urls)),

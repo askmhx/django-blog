@@ -25,6 +25,7 @@
                 <ul class="nav navbar-nav">
                     <li {% if navloc == "blog" or navloc == "home" %}class='active'{% endif %}><a href="{% url 'home' %}">Blog</a></li>
                     <li {% if navloc == "archive" %}class='active'{% endif %}><a href="{% url 'archive' %}">Archive</a></li>
+                    <li {% if navloc == "start" %}class='active'{% endif %}><a href="{% url 'start' %}">Start</a></li>
                     <li {% if navloc == "about" %}class='active'{% endif %}><a href="{% url 'about' %}">About</a></li>
                 </ul>
                 <ul class="nav navbar-nav pull-right hidden">
