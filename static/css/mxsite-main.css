@@ -3,14 +3,8 @@ html,body {
 }
 
 body {
-    background: #e5e5e5;
-    margin: 0;
     padding-top: 70px;
-    border: 0;
-}
-
-li {
-    list-style: none;
+    background: #e5e5e5;
 }
 
 a {

@@ -1,4 +1,8 @@
 
+li {
+    list-style: none;
+}
+
 .search_form {
     width:800px;
 }
