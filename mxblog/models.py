@@ -59,6 +59,8 @@ class PostUser(AbstractBaseUser, PermissionsMixin):
     class Meta:
         db_table = 'mx_user'
         ordering = ['-update_time']
+        verbose_name = u'用户'
+        verbose_name_plural = u'用户'
 
 
 class ModelMeta(models.Model):
@@ -80,6 +82,9 @@ class PostMeta(ModelMeta):
 
     class Meta(ModelMeta.Meta):
         db_table = 'mx_post_meta'
+        verbose_name = u'属性名称'
+        verbose_name_plural = u'属性名称'
+        app_label = u"发布文章"
 
 
 class Post(ModelMeta):
@@ -94,6 +99,9 @@ class Post(ModelMeta):
 
     class Meta(ModelMeta.Meta):
         db_table = 'mx_post'
+        verbose_name = u'发布'
+        verbose_name_plural = u'发布'
+        app_label = u"发布文章"
 
 
 class PostMetaInfo(ModelMeta):
@@ -105,6 +113,9 @@ class PostMetaInfo(ModelMeta):
 
     class Meta(ModelMeta.Meta):
         db_table = 'mx_post_meta_info'
+        verbose_name = u'分组/标注'
+        verbose_name_plural = u'分组/标注'
+        app_label = u"发布文章"
 
 
 class Comments(ModelMeta):
@@ -119,6 +130,9 @@ class Comments(ModelMeta):
 
     class Meta(ModelMeta.Meta):
         db_table = 'mx_comments'
+        verbose_name = u'留言'
+        verbose_name_plural = u'留言'
+        app_label = u"留言信息"
 
 
 class LinkGroup(ModelMeta):
@@ -130,6 +144,9 @@ class LinkGroup(ModelMeta):
 
     class Meta(ModelMeta.Meta):
         db_table = 'mx_link_group'
+        verbose_name = u'链接分组'
+        verbose_name_plural = u'链接分组'
+        app_label = u"链接信息"
 
 
 class Links(ModelMeta):
@@ -147,6 +164,9 @@ class Links(ModelMeta):
 
     class Meta(ModelMeta.Meta):
         db_table = 'mx_links'
+        verbose_name = u'链接'
+        verbose_name_plural = u'链接'
+        app_label = u"链接信息"
 
 
 class Config(ModelMeta):
@@ -159,6 +179,9 @@ class Config(ModelMeta):
 
     class Meta(ModelMeta.Meta):
         db_table = 'mx_config'
+        verbose_name = u'设置'
+        verbose_name_plural = u'设置'
+        app_label = u"网站设置"
 
 
 
