@@ -4,8 +4,8 @@
 <html>
 <head>
     <title>{% block title %} MengHX Blog {% endblock %}</title>
-    <meta name="baidu-site-verification" content="xIrCUUwDRW" />
-    <meta property="wb:webmaster" content="cc81d75b63b48c96" />
+    <meta name="baidu-site-verification" content="xIrCUUwDRW"/>
+    <meta property="wb:webmaster" content="cc81d75b63b48c96"/>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="{% static "css/mxsite-main.css" %}"/>
     {% block head %}{% endblock %}
@@ -23,14 +23,17 @@
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li {% if navloc == "blog" or navloc == "home" %}class='active'{% endif %}><a href="{% url 'home' %}">Blog</a></li>
-                    <li {% if navloc == "archive" %}class='active'{% endif %}><a href="{% url 'archive' %}">Archive</a></li>
+                    <li {% if navloc == "blog" or navloc == "home" %}class='active'{% endif %}><a
+                            href="{% url 'home' %}">Blog</a></li>
+                    <li {% if navloc == "archive" %}class='active'{% endif %}><a href="{% url 'archive' %}">Archive</a>
+                    </li>
                     <li {% if navloc == "start" %}class='active'{% endif %}><a href="{% url 'start' %}">Start</a></li>
                     <li {% if navloc == "about" %}class='active'{% endif %}><a href="{% url 'about' %}">About</a></li>
                 </ul>
                 <ul class="nav navbar-nav pull-right hidden">
                     <li {% if navloc == "login" %}class='active'{% endif %}><a href="{% url 'login' %}">Login</a></li>
-                    <li {% if navloc == "register" %}class='active'{% endif %}><a href="{% url 'register' %}">Register</a></li>
+                    <li {% if navloc == "register" %}class='active'{% endif %}><a
+                            href="{% url 'register' %}">Register</a></li>
                 </ul>
             </div>
         </div>

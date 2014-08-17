@@ -1,4 +1,3 @@
-
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -11,15 +10,26 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'rBcccWonJFYwDiFYWvlJ',
-        'USER': 'EScaDGFFmMBaEicRacLFBA90',
-        'PASSWORD': 'UlWUCIoINM35T40q0Ug2lwQKXV7rkXno',
-        'HOST': 'sqld.duapp.com',
-        'PORT': '4050',
+        'NAME': 'blog_test',
+        'USER': 'root',
+        'PASSWORD': '',
+        'HOST': '',
+        'PORT': '3306',
+        'CHARSET': 'utf8',
+        'COLLATION': 'utf8_general_ci',
+        'OPTIONS': {'init_command': 'SET storage_engine=INNODB;'},
+    }
+
+}
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+        'LOCATION': '/tmp/django_cache',
     }
 }
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['blog.iosxc.com']
 
 TIME_ZONE = 'Asia/Shanghai'
 
@@ -33,33 +43,32 @@ USE_L10N = False
 
 USE_TZ = False
 
-DATE_FORMAT = 'Y-m-d'
+DATE_FORMAT = '%Y-%m-%d'
 
-DATE_INPUT_FORMATS = ('Y-m-d',)
+DATE_INPUT_FORMATS = ('%Y-%m-%d',)
 
-DATETIME_FORMAT = 'Y-m-d'
-#DATETIME_FORMAT = 'Y-m-d H:M:S'
+DATETIME_FORMAT = '%Y-%m-%d %H:%M:%S'
 
-DATETIME_INPUT_FORMATS = ('Y-m-d H:M:S', )
+DATETIME_INPUT_FORMATS = ('%Y-%m-%d %H:%M:%S', )
 
-MEDIA_ROOT = ''
+MEDIA_ROOT = '/opt/projects/mxsite/media/'
 
-MEDIA_URL = ''
+MEDIA_URL = '/media/'
 
-STATIC_ROOT = ''
+STATIC_ROOT = '/opt/projects/mxsite/static/'
 
 STATIC_URL = '/static/'
 
 import os
-STATICFILES_DIRS = (os.path.join(os.path.dirname(__file__), '..', 'static'), )
 
+STATICFILES_DIRS = (os.path.join(os.path.dirname(__file__), '..', 'static'),)
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     'django.contrib.staticfiles.finders.FileSystemFinder',
 )
 
-SECRET_KEY = '=f@ar1vc4x0tc15i3j)k&ccct@w-!!67hv!0o=z^hftn)cg!+l'
+SECRET_KEY = '&!+*ecyg7us9os231%@z__b9lm%6%+_j8o)z4zy6c)!^itl^ph'
 
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
@@ -67,8 +76,8 @@ TEMPLATE_LOADERS = (
 )
 
 MIDDLEWARE_CLASSES = (
-    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -78,6 +87,8 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'mxsite.urls'
 
 WSGI_APPLICATION = 'mxsite.wsgi.application'
+
+import os
 
 TEMPLATE_DIRS = (os.path.join(os.path.dirname(__file__), '..', 'templates').replace('\\', '/'),)
 
@@ -90,7 +101,6 @@ INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
-    'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.admin',
@@ -99,7 +109,7 @@ INSTALLED_APPS = (
 )
 
 CKEDITOR_UPLOAD_PATH = os.path.join(os.path.dirname(__file__), '..', 'static/ufiles').replace('\\', '/')
-CKEDITOR_UPLOAD_PREFIX = "http://blog.vcher.com/static/ufiles/"
+CKEDITOR_UPLOAD_PREFIX = "http://127.0.0.1:8000/static/ufiles/"
 CKEDITOR_CONFIGS = {
     'default': {
         'toolbar': 'Full',
@@ -107,6 +117,8 @@ CKEDITOR_CONFIGS = {
         'width': 1000,
     },
 }
+
+SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
 
 LOGGING = {
     'version': 1,
@@ -131,3 +143,5 @@ LOGGING = {
         },
     }
 }
+
+AUTH_USER_MODEL = 'mxblog.PostUser'

@@ -8,11 +8,13 @@
             {% endif %}
         <article class="col-md-4 well-lg">
             <header>
-                <h3 style="height: 28px;overflow: hidden;"><a href='{% url 'blog' cblog.id %}'>{{ cblog.title|truncatechars:30 }}</a></h3>
-                 <div class="text-muted">
-                        <span>{{ cblog.tags }}</span>
-                        <span class="pull-right">{{ cblog.author }}&nbsp;发表于{{ cblog.create_time }}</span>
-                 </div>
+                <h3 style="height: 28px;overflow: hidden;"><a
+                        href='{% url 'blog' cblog.id %}'>{{ cblog.title|truncatechars:30 }}</a></h3>
+
+                <div class="text-muted">
+                    <span>{{ cblog.tags }}</span>
+                    <span class="pull-right">{{ cblog.author }}&nbsp;发表于{{ cblog.create_time }}</span>
+                </div>
                 <hr/>
             </header>
             <div style="height: 205px;overflow: hidden;-o-text-overflow: ellipsis;-ms-text-overflow: ellipsis;text-overflow: ellipsis;">
@@ -20,10 +22,12 @@
             </div>
             <footer>
                 <hr>
-                <button type="button" class="btn btn-default btn-sm" onclick="thumbsClick(this,'{{ cblog.id }}','support')">
+                <button type="button" class="btn btn-default btn-sm"
+                        onclick="thumbsClick(this,'{{ cblog.id }}','support')">
                     <span class="glyphicon glyphicon-thumbs-up"></span> <span>{{ cblog.support }}</span>
                 </button>
-                <button type="button" class="btn btn-default btn-sm" onclick="thumbsClick(this,'{{ cblog.id }}','oppose')">
+                <button type="button" class="btn btn-default btn-sm"
+                        onclick="thumbsClick(this,'{{ cblog.id }}','oppose')">
                     <span class="glyphicon glyphicon-thumbs-down"></span> <span>{{ cblog.oppose }}</span>
                 </button>
                 <span class="pull-right text-primary">
@@ -31,12 +35,12 @@
                 </span>
             </footer>
         </article>
-        {% if forloop.counter == 3 or forloop.counter == 6%}
+        {% if forloop.counter == 3 or forloop.counter == 6 %}
             </div>
         {% endif %}
         {% endfor %}
     </div>
     {% if  bloglist.count == 6 %}
-            <a class="btn btn-default center-block" href="{% url 'archive' %}">Archives ...</a>
+        <a class="btn btn-default center-block" href="{% url 'archive' %}">Archives ...</a>
     {% endif %}
 {% endblock %}
