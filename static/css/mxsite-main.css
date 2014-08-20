@@ -9,3 +9,7 @@ body {
 a {
     text-decoration: none;
 }
+
+.navbar-alpha {
+    background-color: rgba(df,f0,d8,0.5);
+}

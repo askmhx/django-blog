@@ -152,15 +152,16 @@ class LinkGroup(ModelMeta):
 class Links(ModelMeta):
     url = models.URLField(verbose_name=u"URL", max_length=100)
     title = models.CharField(verbose_name=u"名称", max_length=30)
-    image = models.CharField(verbose_name=u"图片", max_length=1000)
+    image = models.ImageField(verbose_name=u"图片", blank=True)
     description = models.CharField(verbose_name=u"简介", max_length=1000)
-    visible = models.BooleanField(verbose_name=u"显示", default=True)
-    owner = models.CharField(verbose_name=u"作者", max_length=1000)
-    rating = models.CharField(verbose_name=u"评分", max_length=1000)
+    owner = models.CharField(verbose_name=u"主人", max_length=1000)
+    rating = models.IntegerField(verbose_name=u"评分", default=0)
     group = models.ForeignKey(LinkGroup, verbose_name=u"分组", blank=True)
+    visible = models.BooleanField(verbose_name=u"显示", default=True)
+    highlight = models.BooleanField(verbose_name=u"高亮", default=False)
 
     def __unicode__(self):
-        return self.url
+        return self.title
 
     class Meta(ModelMeta.Meta):
         db_table = 'mx_links'

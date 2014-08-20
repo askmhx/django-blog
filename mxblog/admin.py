@@ -27,38 +27,36 @@ from django.views.decorators.debug import sensitive_post_parameters
 csrf_protect_m = method_decorator(csrf_protect)
 sensitive_post_parameters_m = method_decorator(sensitive_post_parameters())
 
-class PostAdmin(admin.ModelAdmin):
-    fields = ('title', 'content', 'author')
+
+class MxBaseAdmin(admin.ModelAdmin):
+    exclude = ('update_time', 'create_time',)
+
+
+class PostAdmin(MxBaseAdmin):
     list_display = ['title', 'author', 'create_time']
 
 
-class PostMetaAdmin(admin.ModelAdmin):
-    fields = ['title', 'author', 'type']
+class PostMetaAdmin(MxBaseAdmin):
     list_display = ['title', 'type', 'create_time']
 
 
-class PostMetaInfoAdmin(admin.ModelAdmin):
-    fields = ['post', 'meta']
+class PostMetaInfoAdmin(MxBaseAdmin):
     list_display = ['post', 'meta']
 
 
-class CommentsAdmin(admin.ModelAdmin):
-    fields = ['post', 'content', 'author']
+class CommentsAdmin(MxBaseAdmin):
     list_display = ['post', 'content', 'create_time']
 
 
-class LinksAdmin(admin.ModelAdmin):
-    fields = ['url', 'title']
+class LinksAdmin(MxBaseAdmin):
     list_display = ['title', 'url', 'create_time']
 
 
-class LinkGroupAdmin(admin.ModelAdmin):
-    fields = ['title', 'author']
+class LinkGroupAdmin(MxBaseAdmin):
     list_display = ['title', 'create_time']
 
 
-class ConfigAdmin(admin.ModelAdmin):
-    fields = ('info_key', 'info_value')
+class ConfigAdmin(MxBaseAdmin):
     list_display = ['info_key', 'info_value', 'create_time']
     pass
 

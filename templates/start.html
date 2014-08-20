@@ -1,96 +1,10 @@
 {% extends 'frame/layout.html' %}
 {% load staticfiles %}
-{% block title %} MengHX Start Page {% endblock %}
-{% block head %}
-    <link rel="stylesheet" href="{% static "css/mxsite-start.css" %}"/>
+{% block custom_head %}
+    {% include "start_header_extra.html" %}
 {% endblock %}
+{% block title %} MengHX Start Page {% endblock %}
 {% block content %}
-    <style>
-
-        li {
-            list-style: none;
-        }
-
-        .search_form {
-            width: 800px;
-            margin: 0 auto;
-        }
-
-        #kw {
-            border-radius: 5px;
-            width: 400px;
-            height: 30px;
-            line-height: 30px;
-            border: 1px solid #999;
-        }
-
-        .search_btn {
-            width: 80px;
-            height: 30px;
-            line-height: 30px;
-            background-color: #5b74a8;
-            border: 1px solid #999;
-            color: #ffffff;
-        }
-
-        .search_btn:hover {
-            background-color: #2e3889;
-        }
-
-        .link_table {
-            margin-top: 20px;
-        }
-
-        .link_table_row {
-            border: 1px solid #b4bbcd;
-            background-color: #ffffff;
-            margin-top: 5px;
-            border-radius: 5px;
-            margin-bottom: 20px;
-        }
-
-        .link_table_row_header {
-            width: 30px;
-            background-color: #f5f5f5;
-            float: left;
-            line-height: 30px;
-            color: #3b5998;
-            text-align: left;
-            padding: 10px;
-            border-right: 1px solid #b4bbcd;
-            border-top-left-radius: 5px;
-            border-bottom-left-radius: 5px;
-            font: normal bold 1.0em/1em arial, sans-serif;
-        }
-
-        .link_table_row ul {
-            margin-left: 15px;
-            padding: 0 10px 0 0;
-            width: 100%;
-        }
-
-        .link_table_row ul li {
-            float: left;
-            margin: 5px 10px 0;
-            text-align: center;
-        }
-
-        .link_table_row ul li a {
-            color: #333;
-            display: block;
-            padding: 3px 10px;
-            line-height: 25px;
-        }
-
-        .link_table_row ul li a.init {
-            color: #00088e;
-        }
-
-        .link_table_row ul li a:hover {
-            color: #000;
-            background-color: #eff2f7;
-        }
-    </style>
     <div id="search_content">
         <form class="search_form" id="queryForm" action="http://www.google.com/search" target="_blank">
             <input accesskey="s" id="kw" type="text" name="q" placeholder="输入关键词" onkeydown="submitForm(e)"/>
@@ -99,124 +13,21 @@
             <input class="search_btn" type="button" onclick="subForm(3)" value="Bing"/>
         </form>
     </div>
+    <div class="clearfix"></div>
     <div class="link_table">
+    {% for linkGroup in linkGroups %}
         <div class="link_table_row">
             <div class="link_table_row_header">
-                <p>资</p>
-
-                <p>讯</p>
+                <p>{{ linkGroup.title }}</p>
             </div>
             <ul>
-                <li><a target="_blank" class="init" href="http://www.265.com">265</a></li>
-                <li><a target="_blank" href="http://www.csdn.net">CSDN</a></li>
-                <li><a class="init" target="_blank" href="http://www.51cto.com">51CTO</a></li>
-                <li><a target="_blank" href="http://www.infoq.com">InfoQ</a></li>
-                <li><a class="init" target="_blank" href="http://news.ycombinator.com">Hack News</a></li>
-                <li><a target="_blank" href="http://www.lwn.net">LWN</a></li>
-                <li><a target="_blank" href="http://www.aqee.net">Aqee</a></li>
-                <li><a class="init" target="_blank" href="http://www.linuxeden.com">LinuxEden</a></li>
-                <li><a target="_blank" class="init" href="http://www.oschina.net">OSChina</a></li>
-                <li><a target="_blank" class="init" href="http://www.cnbeta.com">cnBeta</a></li>
-                <li><a target="_blank" href="http://www.cnblogs.com">cnBlogs</a></li>
-                <li><a target="_blank" href="https://groups.google.com">Google Groups</a></li>
-                <li><a target="_blank" href="https://github.com/">GitHub</a></li>
-                <li><a target="_blank" href="http://www.haskell.org">Haskell</a></li>
-                <li><a target="_blank" href="https://www.fpcomplete.com/school">Haskell School</a></li>
+                {% for link in linkGroup.links_set.all %}
+                      <li><a target="_blank" alt="{{ link.owner }},{{ link.description }}" {% if link.highlight %} class="init" {% endif %} href="{{ link.url }}">{{ link.title }}</a></li>
+                {% endfor %}
             </ul>
             <div class="clearfix"></div>
         </div>
-        <div class="link_table_row">
-            <div class="link_table_row_header">
-                <p>文</p>
-
-                <p>档</p>
-            </div>
-            <ul>
-                <li><a target="_blank" class="init"
-                       href="https://developer.apple.com/devcenter/ios/index.action">IOS</a></li>
-                <li><a class="init" target="_blank" href="http://developer.android.com">Android</a></li>
-                <li><a target="_blank" href="https://developer.palm.com">WebOS</a></li>
-                <li><a target="_blank" href="https://developer.tizen.org">Tizen</a></li>
-                <li><a class="init" target="_blank" href="http://golang.org/doc/">Go Doc</a></li>
-                <li><a target="_blank" href="http://docs.oracle.com/javase/6/docs">JAVA Docs</a></li>
-                <li><a target="_blank" href="http://www.erlang.org/doc.html">Erlang Docs</a></li>
-                <li><a class="init" target="_blank" href="http://w3schools.com">W3School</a></li>
-                <li><a target="_blank" class="init" href="http://msdn.microsoft.com/en-US/">MSDN</a></li>
-                <li><a target="_blank" href="https://developers.google.com">Google Developers</a></li>
-                <li><a class="init" target="_blank" href="http://www.ibm.com/developerworks/cn/">IBM DW</a></li>
-                <li><a target="_blank" href="http://llvm.org">LLVM</a></li>
-                <li><a target="_blank" href="http://www.webkit.org">WebKit</a></li>
-                <li><a target="_blank" href="http://www.gnu.org/manual/manual.html">GNU Manual</a></li>
-                <li><a target="_blank" href="http://www.apache.org">Apache</a></li>
-                <li><a class="init" target="_blank" href="http://developer.gnome.org">Gnome</a></li>
-            </ul>
-            <div class="clearfix"></div>
-        </div>
-        <div class="link_table_row">
-            <div class="link_table_row_header">
-                <p>开</p>
-
-                <p>源</p>
-            </div>
-            <ul>
-                <li><a target="_blank" class="init" href="http://www.centos.org">CentOS</a></li>
-                <li><a target="_blank" href="http://www.gentoo.org">Gentoo</a></li>
-                <li><a target="_blank" href="http://www.archlinux.org">ArchLinux</a></li>
-                <li><a class="init" target="_blank" href="http://www.freebsd.org">FreeBSD</a></li>
-                <li><a target="_blank" href="http://www.nginx.org">Nginx</a></li>
-                <li><a target="_blank" class="init" href="http://www.linuxvirtualserver.org">LVS</a></li>
-                <li><a target="_blank" href="http://www.x.org">Xorg</a></li>
-                <li><a target="_blank" href="http://www.rpm.org">RPM</a></li>
-                <li><a target="_blank" href="http://www.fedoraproject.org">Fedora</a></li>
-                <li><a class="init" target="_blank" href="http://worldofgnome.org/">WorldOfGnome</a></li>
-                <li><a target="_blank" href="http://www.themukt.com/">Themukt</a></li>
-                <li><a target="_blank" href="http://www.omgubuntu.co.uk/">OMGUbuntu</a></li>
-                <li><a class="init" target="_blank" href="http://man.he.net/">Linux Man</a></li>
-            </ul>
-            <div class="clearfix"></div>
-        </div>
-        <div class="link_table_row">
-            <div class="link_table_row_header">
-                <p>科</p>
-
-                <p>技</p>
-            </div>
-            <ul>
-                <li><a class="init" target="_blank" href="http://www.theverge.com/">TheVerge</a></li>
-                <li><a target="_blank" href="http://techcrunch.com/">TechCrunch</a></li>
-                <li><a target="_blank" href="http://thenextweb.com/">TheNextWeb</a></li>
-                <li><a class="init" target="_blank" href="http://online.wsj.com/news/technology">WSJTect</a></li>
-                <li><a target="_blank" href="http://arstechnica.com/">ArsTechnica</a></li>
-                <li><a target="_blank" href="http://www.engadget.com/">Engadget</a></li>
-                <li><a target="_blank" href="http://readwrite.com/">ReadWrite</a></li>
-                <li><a target="_blank" href="http://www.techradar.com/">TechRadar</a></li>
-                <li><a target="_blank" href="http://thetechblock.com/">TheTechBlock</a></li>
-                <li><a target="_blank" href="http://gigaom.com/">GiGaom</a></li>
-                <li><a target="_blank" href="http://venturebeat.com/">VentureBeat</a></li>
-                <li><a target="_blank" href="http://mashable.com/">MashAble</a></li>
-                <li><a target="_blank" href="http://sociable.co/">Sociable</a></li>
-                <li><a target="_blank" href="http://www.geekwire.com/">GeekWire</a></li>
-                <li><a class="init" target="_blank" href="http://bgr.com/">BGR</a></li>
-                <li><a class="init" target="_blank" href="http://9to5mac.com/">9TO5MAC</a></li>
-            </ul>
-            <div class="clearfix"></div>
-        </div>
-        <div class="link_table_row">
-            <div class="link_table_row_header">
-                <p>娱</p>
-
-                <p>乐</p>
-            </div>
-            <ul>
-                <li><a target="_blank" href="http://plus.google.com">Google+</a></li>
-                <li><a target="_blank" href="http://www.facebook.com">FaceBook</a></li>
-                <li><a target="_blank" href="http://www.twitter.com">Twitter</a></li>
-                <li><a class="init" target="_blank" href="http://weibo.com">Weibo</a></li>
-                <li><a target="_blank" href="http://music.baidu.com">Baidu Music</a></li>
-                <li><a target="_blank" href="http://music.163.com/">163 Music</a></li>
-            </ul>
-            <div class="clearfix"></div>
-        </div>
+    {% endfor %}
     </div>
     <script charset="gbk" src="http://www.baidu.com/js/opensug.js"></script>
 {% endblock %}
