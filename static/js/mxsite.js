@@ -57,9 +57,10 @@ var params = {
     "bgcolorHI": "#03c",		//提示框高亮选择的颜色
     "sugSubmit": false		//在选择提示词条是是否提交表单
 };
-
-BaiduSuggestion.bind("kw", params, function (kwords) {
-    document.getElementById("kw").value = kwords;
-    subForm(1);
-});
-document.getElementById("kw").focus();
+try{
+    BaiduSuggestion.bind("kw", params, function (kwords) {
+            document.getElementById("kw").value = kwords;
+            subForm(1);
+    });
+    document.getElementById("kw").focus();
+}catch(e){}
