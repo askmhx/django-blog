@@ -119,7 +119,7 @@ class PostMetaInfo(ModelMeta):
 
 
 class Comments(ModelMeta):
-    parent = models.IntegerField(verbose_name=u"上级", blank=type)
+    parent = models.IntegerField(verbose_name=u"上级", blank=True)
     post = models.ForeignKey(Post, verbose_name=u"主题",  blank=True)
     author = models.ForeignKey(PostUser, verbose_name=u"作者", blank=True)
     content = models.CharField(verbose_name=u"内容", max_length=1000)
@@ -138,6 +138,7 @@ class Comments(ModelMeta):
 class LinkGroup(ModelMeta):
     title = models.CharField(verbose_name=u"名称", max_length=100)
     author = models.ForeignKey(PostUser, verbose_name=u"作者",  blank=True)
+    sort = models.IntegerField(verbose_name=u"排序", default=0, blank=False)
 
     def __unicode__(self):
         return self.title
@@ -159,6 +160,7 @@ class Links(ModelMeta):
     group = models.ForeignKey(LinkGroup, verbose_name=u"分组", blank=True)
     visible = models.BooleanField(verbose_name=u"显示", default=True)
     highlight = models.BooleanField(verbose_name=u"高亮", default=False)
+    sort = models.IntegerField(verbose_name=u"排序", default=0, blank=False)
 
     def __unicode__(self):
         return self.title
