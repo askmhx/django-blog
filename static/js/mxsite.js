@@ -63,4 +63,4 @@ try{
             subForm(1);
     });
     document.getElementById("kw").focus();
-}catch(e){}
+}catch(err){}
