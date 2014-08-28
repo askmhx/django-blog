@@ -21,6 +21,7 @@ li {
 #kw:focus {
     border: 1px solid #38f;
     border-right: 0;
+    outline:none;
 }
 
 .search_btn {
