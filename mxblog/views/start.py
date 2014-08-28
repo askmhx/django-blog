@@ -11,5 +11,4 @@ class StartView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(StartView, self).get_context_data(**kwargs)
         context['linkGroups'] = LinkGroup.objects.order_by('sort')
-        context['navloc'] = "start"
         return context

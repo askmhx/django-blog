@@ -4,6 +4,16 @@
  * Time: 12:26 PM
  */
 
+$(function(){
+    var url =  $(location).attr('pathname');
+    var paths = url.split("/");
+    if(paths.length>1&&paths[1]!=""){
+        $("#nav_item_"+paths[1]).addClass("active");
+    }else{
+        $("#nav_item_blog").addClass("active");
+    }
+});
+
 function thumbsClick(element, bId, type) {
     var cookieKey = "blog_thumbs_" + bId;
     if ($.cookie(cookieKey) == 'true') {

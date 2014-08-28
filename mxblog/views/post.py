@@ -11,12 +11,12 @@ __author__ = 'MengHX'
 
 def blog(request, bid=0):
     blog = Post.objects.get(id=bid)
-    return TemplateResponse(request, 'blog.html', {"navloc": "blog", "blog": blog})
+    return TemplateResponse(request, 'blog.html', {"blog": blog})
 
 
 def archive(request):
     bloglist = Post.objects.all()
-    return TemplateResponse(request, 'archive.html', {"navloc": "archive", "bloglist": bloglist})
+    return TemplateResponse(request, 'archive.html', {"bloglist": bloglist})
 
 
 def thumbs(request, ctype, bid):
