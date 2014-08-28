@@ -39,7 +39,12 @@ li {
     float: left;
     border: 0;
     border-left: 1px solid #d8d8d8;
+    text-shadow: 3px 3px 1px #2680ff;
     color: #ffffff;
+}
+.search_btn:hover {
+    text-shadow: 3px 3px 1px #0750ff;
+    background-color: #1681ff;
 }
 
 .link_table {
@@ -71,6 +76,7 @@ li {
 .link_table_row_header p {
     line-height: 40px;
     transform:rotate(90deg);
+    text-shadow: 3px 3px 1px #efefef;
 }
 
 .link_table_row ul {
@@ -90,6 +96,8 @@ li {
     display: block;
     padding: 3px 10px;
     line-height: 25px;
+    text-shadow: 3px 3px 1px #efefef;
+    text-decoration: none;
 }
 
 .link_table_row ul li a.init {
