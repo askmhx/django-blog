@@ -10,11 +10,11 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'blog_test',
+        'NAME': 'blog',
         'USER': 'root',
         'PASSWORD': '',
         'HOST': '',
-        'PORT': '',
+        'PORT': '3306',
         'CHARSET': 'utf8',
         'COLLATION': 'utf8_general_ci',
         'OPTIONS': {'init_command': 'SET storage_engine=INNODB;'},
@@ -33,35 +33,37 @@ ALLOWED_HOSTS = ['blog.iosxc.com']
 
 TIME_ZONE = 'Asia/Shanghai'
 
-LANGUAGE_CODE = 'zh-cn'
+LANGUAGE_CODE = 'en_us'
 
 SITE_ID = 1
 
 USE_I18N = True
 
-USE_L10N = False
+USE_L10N = True
 
-USE_TZ = False
+USE_TZ = True
 
-DATE_FORMAT = '%Y-%m-%d'
+DATE_FORMAT = 'Y-m-d'
 
 DATE_INPUT_FORMATS = ('%Y-%m-%d',)
 
-DATETIME_FORMAT = '%Y-%m-%d %H:%M:%S'
+DATETIME_FORMAT = 'Y-m-d H:M:S'
 
 DATETIME_INPUT_FORMATS = ('%Y-%m-%d %H:%M:%S', )
 
-MEDIA_ROOT = '/opt/projects/mxsite/media/'
+import os
+
+PROJECT_ROOT = os.path.join(os.path.dirname(__file__), '..')
+
+MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
 
 MEDIA_URL = '/media/'
 
-STATIC_ROOT = '/opt/projects/mxsite/static/'
+STATIC_ROOT = '/var/projects/mxsite/static'
 
 STATIC_URL = '/static/'
 
-import os
-
-STATICFILES_DIRS = (os.path.join(os.path.dirname(__file__), '..', 'static'),)
+STATICFILES_DIRS = (os.path.join(PROJECT_ROOT, 'static'),)
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
@@ -88,14 +90,15 @@ ROOT_URLCONF = 'mxsite.urls'
 
 WSGI_APPLICATION = 'mxsite.wsgi.application'
 
-import os
 
-TEMPLATE_DIRS = (os.path.join(os.path.dirname(__file__), '..', 'templates').replace('\\', '/'),)
+TEMPLATE_DIRS = (os.path.join(PROJECT_ROOT, 'templates'),)
+
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     "django.contrib.auth.context_processors.auth",
     "django.core.context_processors.request",
 )
+
 
 INSTALLED_APPS = (
     'django.contrib.auth',
@@ -108,8 +111,8 @@ INSTALLED_APPS = (
     'mxblog',
 )
 
-CKEDITOR_UPLOAD_PATH = os.path.join(os.path.dirname(__file__), '..', 'static/ufiles').replace('\\', '/')
-CKEDITOR_UPLOAD_PREFIX = "http://127.0.0.1:8000/static/ufiles/"
+CKEDITOR_UPLOAD_PATH = os.path.join(STATIC_ROOT, 'uploads')
+CKEDITOR_SLUGIFY_FILENAME = False
 CKEDITOR_CONFIGS = {
     'default': {
         'toolbar': 'Full',
@@ -145,3 +148,5 @@ LOGGING = {
 }
 
 AUTH_USER_MODEL = 'mxblog.PostUser'
+
+TEST_RUNNER = 'django.test.runner.DiscoverRunner'
