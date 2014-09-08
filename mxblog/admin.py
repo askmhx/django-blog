@@ -32,35 +32,38 @@ class MxBaseAdmin(admin.ModelAdmin):
     exclude = ('update_time', 'create_time',)
 
 
+@admin.register(Post)
 class PostAdmin(MxBaseAdmin):
     list_display = ['title', 'author', 'create_time']
 
-
+@admin.register(PostMeta)
 class PostMetaAdmin(MxBaseAdmin):
     list_display = ['title', 'type', 'create_time']
 
-
+@admin.register(PostMetaInfo)
 class PostMetaInfoAdmin(MxBaseAdmin):
     list_display = ['post', 'meta']
 
-
+@admin.register(Comments)
 class CommentsAdmin(MxBaseAdmin):
     list_display = ['post', 'content', 'create_time']
 
 
+@admin.register(Links)
 class LinksAdmin(MxBaseAdmin):
     list_display = ['title', 'url', 'create_time']
 
-
+@admin.register(LinkGroup)
 class LinkGroupAdmin(MxBaseAdmin):
     list_display = ['title', 'create_time']
 
 
+@admin.register(Config)
 class ConfigAdmin(MxBaseAdmin):
     list_display = ['info_key', 'info_value', 'create_time']
     pass
 
-
+@admin.register(PostUser)
 class PostUserAdmin(admin.ModelAdmin):
     add_form_template = 'admin/auth/user/add_form.html'
     change_user_password_template = None
@@ -181,13 +184,3 @@ class PostUserAdmin(admin.ModelAdmin):
             request.POST['_continue'] = 1
         return super(PostUserAdmin, self).response_add(request, obj,
                                                    post_url_continue)
-
-
-admin.site.register(Post, PostAdmin)
-admin.site.register(PostMeta, PostMetaAdmin)
-admin.site.register(PostMetaInfo, PostMetaInfoAdmin)
-admin.site.register(Comments, CommentsAdmin)
-admin.site.register(Links, LinksAdmin)
-admin.site.register(LinkGroup, LinkGroupAdmin)
-admin.site.register(Config, ConfigAdmin)
-admin.site.register(PostUser, PostUserAdmin)

@@ -6,8 +6,8 @@ __author__ = 'MengHX'
 
 
 def index(request):
-    bloglist = Post.objects.all()[:6]
-    return TemplateResponse(request, 'index.html', {"bloglist": bloglist})
+    postList = Post.objects.all()[:6]
+    return TemplateResponse(request, 'index.html', {"postList": postList})
 
 
 def about(request):
