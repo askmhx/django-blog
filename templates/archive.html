@@ -2,10 +2,10 @@
 {% block title %} MengHX Blog List {% endblock %}
 {% block content %}
     <ul class="list-unstyled">
-        {% for cblog in bloglist %}
+        {% for cblog in postList %}
             <li>
                 <div class="container well-sm">
-                    <a href='{% url 'blog' cblog.id %}' class="h5">{{ cblog.title }}</a>
+                    <a href='{% url 'post' cblog.id %}' class="h5">{{ cblog.title }}</a>
                     <span class="pull-right">{{ cblog.create_time }}</span>
                 </div>
             </li>

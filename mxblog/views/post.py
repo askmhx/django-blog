@@ -9,9 +9,9 @@ from mxblog.models import Post
 __author__ = 'MengHX'
 
 
-def blog(request, bid=0):
+def post(request, bid=0):
     post = Post.objects.get(id=bid)
-    return TemplateResponse(request, 'blog.html', {"post": post})
+    return TemplateResponse(request, 'post.html', {"post": post})
 
 
 def archive(request):

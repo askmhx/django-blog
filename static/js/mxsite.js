@@ -7,7 +7,7 @@
 $(function(){
     var url =  $(location).attr('pathname');
     var paths = url.split("/");
-    if(paths.length>1&&paths[1]!=""){
+    if(paths.length>1&&paths[1]!=""&&paths[1]!="post"){
         $("#nav_item_"+paths[1]).addClass("active");
     }else{
         $("#nav_item_blog").addClass("active");

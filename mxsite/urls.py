@@ -11,7 +11,7 @@ urlpatterns = patterns(
     url(r'^$', site.index, name='home'),
     url(r'^register/', user.register, name='register'),
     url(r'^login/', user.login, name='login'),
-    url(r'^post/(?P<bid>\d+)/', post.blog, name='post'),
+    url(r'^post/(?P<bid>\d+)/', post.post, name='post'),
     url(r'^thumbs/(?P<ctype>(support)|(oppose))/(?P<bid>\d+)/', post.thumbs),
     url(r'^archive/', post.archive, name='archive'),
     url(r'^start/', StartView.as_view(), name='start'),
